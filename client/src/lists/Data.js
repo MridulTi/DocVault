@@ -1,0 +1,51 @@
+export const conclusion=[
+    {   
+        "icons":"<BookDashedIcon/>",
+        "name":"Document",
+        "value":"56"
+    },
+    {
+        "icons":"<BookDashedIcon/>",
+        "name":"Signed",
+        "value":"30"
+    },
+    {
+        "icons":"<BookDashedIcon/>",
+        "name":"Friends",
+        "value":"20"
+    },
+]
+export const AccCard=[
+    {   
+        img:"",
+        name:"User_1"
+    },
+    {   
+        img:"",
+        name:"User_1"
+    },
+    {   
+        img:"",
+        name:"User_1"
+    },
+    {   
+        img:"",
+        name:"User_1"
+    },
+    {   
+        img:"",
+        name:"User_1"
+    },
+    {   
+        img:"",
+        name:"User_1"
+    },
+    {   
+        img:"",
+        name:"User_1"
+    },
+    {   
+        img:"",
+        name:"User_1"
+    }
+]
