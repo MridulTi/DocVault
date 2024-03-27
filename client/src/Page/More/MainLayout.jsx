@@ -1,15 +1,14 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
-import Upload  from "../../components/Upload" 
+import Upload from "../../components/Upload"
 import { Toaster } from "../../components/ui/toaster";
 import { LogoutButton } from "../../components/Log(in-out)Button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@radix-ui/react-hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { User, useAuth0 } from "@auth0/auth0-react";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@radix-ui/react-dialog";
-import { CopyIcon, Dock, GroupIcon, HomeIcon,  } from "lucide-react";
+import { CopyIcon, Dock, GroupIcon, HomeIcon, UploadIcon, } from "lucide-react";
 import { Button, buttonVariants } from "../../components/ui/button";
 import { DialogFooter, DialogHeader, DialogOverlay } from "../../components/ui/dialog";
-import { Input } from "../../components/ui/input";
 import { useState } from "react";
 import { AccCard } from "../../lists/Data";
 import { ChatCard } from "../../components/Cards";
@@ -17,7 +16,7 @@ import { ChatCard } from "../../components/Cards";
 // import Footer from "../../Components/Footer/Footer";
 // import Navbar from "../../Components/Navbar/Navbar";
 
-const MainLayout = () => {
+const MainLayout = ({contract,account,provider}) => {
   const { user } = useAuth0();
   const [modal, setmodal] = useState(false)
   const location = useLocation();
@@ -34,11 +33,25 @@ const MainLayout = () => {
           <ul className='grid gap-2 text-gray-3 text-md font-semibold'>
             <Link to="/" className={buttonVariants({ variant: "secondary", size: "sm", className: "flex w-52 gap-4 hover:bg-gray-5 hover:text-gray-10" })}><HomeIcon /> My Documents</Link>
             <Link to="/friends" className={buttonVariants({ variant: "secondary", size: "sm", className: "flex w-52 gap-4 hover:bg-gray-5 hover:text-gray-10" })}><GroupIcon /> Friends</Link>
-            <Link to="/Upload" className={buttonVariants({ variant: "secondary", size: "sm", className: "flex w-52 gap-4 hover:bg-gray-5 hover:text-gray-10" })}><GroupIcon /> Upload</Link>
+            {/* <Link to="/Upload" className={buttonVariants({ variant: "secondary", size: "sm", className: "flex w-52 gap-4 hover:bg-gray-5 hover:text-gray-10" })}><GroupIcon /> Upload</Link> */}
+            <Dialog>
+              <DialogTrigger className="flex w-52 gap-4 px-3 py-2 rounded-lg hover:bg-gray-5 hover:text-gray-10"><UploadIcon/> Upload</DialogTrigger>
+              <DialogOverlay className="w-screen h-screen grid place-items-center">
+                <DialogContent className=" p-5 rounded-2xl sm:max-w-[425px] bg-gray-5 text-gray-10">
+                  <DialogHeader>
+                    <DialogTitle className="font-bold text-xl">Upload</DialogTitle>
+                  </DialogHeader>
+                  <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Upload contract={contract} account={account} provider={provider}/>
+                  </div>
+                </DialogContent>
+              </DialogOverlay>
+            </Dialog>
             {/* <LogoutButton /> */}
           </ul>
         </div>
       </div>
+
       <div className="">
         <Outlet />
         {/* <Footer/> */}
@@ -59,10 +72,10 @@ const MainLayout = () => {
       </HoverCard>
       {isButtonActive("/friends") && (
         <div className=" pt-16 bg-base-primary absolute z-10 right-0 top-0 w-64 h-[100vh] flex flex-col gap-4">
-          {AccCard.map((data)=>{
-            return(
+          {AccCard.map((data) => {
+            return (
               <ChatCard
-              {...data}
+                {...data}
               />
             )
           })}
