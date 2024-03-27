@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import './Upload.css'
+import { Button } from "./ui/button";
 
 const Upload = ({ contract, account, provider }) => {
   const [file, setFile] = useState(null);
@@ -47,20 +48,21 @@ const Upload = ({ contract, account, provider }) => {
     e.preventDefault();
   };
   return (
-    <div className="top" >
-      <form className="form" onSubmit={handleSubmit}>
-        <label htmlFor="file-upload" className="choose">
+    <div className="" >
+      <form className="grid justify-center" onSubmit={handleSubmit}>
+        {/* <label htmlFor="file" ">
           Choose Image
-        </label>
+        </label> */}
         <input
           disabled={!account}
           type="file"
           id="file-upload"
           name="data"
+          className="p-5"
           onChange={retrieveFile}
         />
-        <span className="textArea">Image: {fileName}</span>
-        <button type="submit" className="upload" disabled={!file}>
+        {/* <span className="pb-4">Image: {fileName}</span> */}
+        <button variant="secondary" type="submit" className="bg-blues-3 text-gray-5 p-2 rounded-lg" disabled={!file}>
           Upload File
         </button>
       </form>

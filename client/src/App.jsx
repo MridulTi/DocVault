@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import UploadContract from "../../build/contracts/Upload.json";
+// import UploadContract from "../../build/contracts/Upload.json";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./Page/Home/Home";
 import MainLayout from "./Page/More/MainLayout";
@@ -22,7 +22,7 @@ export default function App(){
     const router = createBrowserRouter([
         {
           path:"/",
-          element:isAuthenticated?<MainLayout/>:<Login/>,
+          element:isAuthenticated?<MainLayout contract={contract} account={account} provider={provider}/>:<Login/>,
           children:[
 
             {
@@ -34,8 +34,6 @@ export default function App(){
               element:<Friends/>
             },
             {
-              path:"/Upload",
-              element:<Upload contract={contract} account={account} provider={provider}/>
             }
             // {
             //   path: "/monitor",
