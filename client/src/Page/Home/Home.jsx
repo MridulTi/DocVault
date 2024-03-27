@@ -8,8 +8,10 @@ import { Input } from '../../components/ui/input'
 import { Search} from 'lucide-react'
 import { ConclusionCards, DocsCard } from '../../components/Cards'
 import { conclusion } from '../../lists/Data'
+import Display from '../../components/Display'
 
-function Home() {
+
+function Home({contract ,account}) {
   const { user, isAuthenticated, isLoading } = useAuth0();
   return (
     <div className='grid pl-64 py-4 w-[86vw] text-gray-5'>
@@ -29,10 +31,12 @@ function Home() {
       </div>
       <h1 className='font-bold text-xl py-4 pt-6 tracking-wider'>Recently Viewed Documents</h1>
       <div className='grid gap-4 grid-cols-4'>
+        {/* <DocsCard/>
         <DocsCard/>
         <DocsCard/>
-        <DocsCard/>
-        <DocsCard/>
+        <DocsCard/> */}
+        <Display contract={contract} account={account}/>
+
       </div>
       <h1 className='font-bold text-2xl py-4 pt-6 tracking-wider'>Activity</h1>
     </div>

@@ -27,7 +27,7 @@ export default function App(){
 
             {
               path: "/",
-              element:<Home/>
+              element:<Home contract={contract} account={account}/>
             },
             {
               path: "/friends",
@@ -35,7 +35,7 @@ export default function App(){
             },
             {
               path:"/Upload",
-              element:<Upload/>
+              element:<Upload contract={contract} account={account} provider={provider}/>
             }
             // {
             //   path: "/monitor",
