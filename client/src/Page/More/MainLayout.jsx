@@ -1,11 +1,12 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
+import Upload  from "../../components/Upload" 
 import { Toaster } from "../../components/ui/toaster";
 import { LogoutButton } from "../../components/Log(in-out)Button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@radix-ui/react-hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { User, useAuth0 } from "@auth0/auth0-react";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@radix-ui/react-dialog";
-import { CopyIcon, Dock, GroupIcon, HomeIcon, Upload } from "lucide-react";
+import { CopyIcon, Dock, GroupIcon, HomeIcon,  } from "lucide-react";
 import { Button, buttonVariants } from "../../components/ui/button";
 import { DialogFooter, DialogHeader, DialogOverlay } from "../../components/ui/dialog";
 import { Input } from "../../components/ui/input";
@@ -33,29 +34,7 @@ const MainLayout = () => {
           <ul className='grid gap-2 text-gray-3 text-md font-semibold'>
             <Link to="/" className={buttonVariants({ variant: "secondary", size: "sm", className: "flex w-52 gap-4 hover:bg-gray-5 hover:text-gray-10" })}><HomeIcon /> My Documents</Link>
             <Link to="/friends" className={buttonVariants({ variant: "secondary", size: "sm", className: "flex w-52 gap-4 hover:bg-gray-5 hover:text-gray-10" })}><GroupIcon /> Friends</Link>
-            <Dialog>
-              <DialogTrigger asChild onClick={() => setmodal(true)}>
-                <Button className="cursor-pointer flex gap-4 w-52 hover:text-gray-10 hover:bg-gray-5"><Upload />Upload</Button>
-              </DialogTrigger>
-              <DialogOverlay className="grid place-items-center">
-                <DialogContent className=" z-50 text-gray-10 bg-gray-5 rounded-xl w-96 p-12 grid">
-                  <DialogHeader>
-                    <DialogTitle className="pb-4 font-bold text-xl">Upload Documents</DialogTitle>
-                  </DialogHeader>
-                  <div className="grid gap-4 py-4">
-                    <div className="grid gap-4 place-items-start">
-                      <p>Your Document</p>
-                      <Input id="picture" type="file" className="w-64" />
-                      <p>Digital Signature:</p>
-                      <Input id="picture" type="file" className="w-64" />
-                    </div>
-                    <Button type="submit" className="bg-semantics-1 flex gap-2 text-gray-5 justify-center"><Upload/>Upload</Button>
-                  </div>
-
-                </DialogContent>
-              </DialogOverlay>
-
-            </Dialog>
+            <Link to="/Upload" className={buttonVariants({ variant: "secondary", size: "sm", className: "flex w-52 gap-4 hover:bg-gray-5 hover:text-gray-10" })}><GroupIcon /> Upload</Link>
             <LogoutButton />
           </ul>
         </div>
