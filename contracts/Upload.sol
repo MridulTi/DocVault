@@ -38,10 +38,19 @@ contract Upload {
       }
   }
 
-  function display(address _user) external view returns(string[] memory){
+      function display(address _user) external view returns(string[] memory){
       require(_user==msg.sender || ownership[_user][msg.sender],"You don't have access");
       return value[_user];
   }
+//   function display(address user) external view returns(string memory){
+//     if(user==msg.sender || ownership[user][msg.sender]){
+// 
+//     }else{
+        
+//     }
+    //   require(user==msg.sender || ownership[user][msg.sender],"You don't have access");
+      
+  
 
   function shareAccess() public view returns(Access[] memory){
       return accessList[msg.sender];

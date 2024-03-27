@@ -1,19 +1,23 @@
 import { useState } from "react";
 
 const Display = ({ contract, account }) => {
+    
   const [data, setData] = useState("");
-  const getdata = async () => {
+  const getdata =  async() => {
     let dataArray;
     const Otheraddress = document.querySelector(".address").value;
     try {
       if (Otheraddress) {
-        dataArray = await contract.display(Otheraddress);
+        dataArray =  await contract.display(Otheraddress);
         console.log(dataArray);
       } else {
-        dataArray = await contract.display(account);
+        console.log("kfnkdnf");
+        dataArray =  await contract.display(account);
+        console.log(dataArray);
       }
-    } catch (e) {
-      alert("You don't have access");
+    }catch (e) {
+        
+      alert(`You don't have access ${account}`);
     }
     const isEmpty = Object.keys(dataArray).length === 0;
 
