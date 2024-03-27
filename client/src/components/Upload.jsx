@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import './Upload.css'
+import "./Upload.css";
 
-const Upload = ({ contract, account, provider }) => {
+const Upload = ({ contract, account }) => {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No image selected");
   const handleSubmit = async (e) => {
@@ -23,7 +23,7 @@ const Upload = ({ contract, account, provider }) => {
           },
         });
         const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
-        contract.add(account,ImgHash);
+        contract.add(account, ImgHash);
         alert("Successfully Image Uploaded");
         setFileName("No image selected");
         setFile(null);
@@ -47,7 +47,7 @@ const Upload = ({ contract, account, provider }) => {
     e.preventDefault();
   };
   return (
-    <div className="top" >
+    <div className="top">
       <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="file-upload" className="choose">
           Choose Image
