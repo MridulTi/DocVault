@@ -37,6 +37,7 @@ export default function App(){
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
+        console.log(typeof(address))
         setProvider(provider);
         let contractAddress = "0x5f6633e7BBfFe078a4204e67fad35D4d55d5FCAf";
 

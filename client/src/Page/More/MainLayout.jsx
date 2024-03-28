@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { AccCard } from "../../lists/Data";
 import { ChatCard } from "../../components/Cards";
 import { useModal } from "../../context/ModalContext";
+import Modal from "../../components/Modal";
 // import { Toast } from "../../components/ui/toast";
 // import Footer from "../../Components/Footer/Footer";
 // import Navbar from "../../Components/Navbar/Navbar";
@@ -92,17 +93,19 @@ const MainLayout = ({contract,account,provider, setModalOpen }) => {
           })}
         </div>
       )}
-      {modalOpen&&<DialogOverlay className="w-screen h-screen grid place-items-center">
-                <DialogContent className=" p-5 rounded-2xl sm:max-w-[425px] bg-gray-5 text-gray-10">
-                  <DialogHeader>
-                    <DialogTitle className="font-bold text-xl">Upload</DialogTitle>
-                  </DialogHeader>
-                  <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Upload contract={contract} account={account} provider={provider}/>
-                    <button onClick={handleclose}>close</button>
+      {modalOpen&&<div>
+              <div className="flex w-52 gap-4 px-3 py-2 rounded-lg hover:bg-gray-5 hover:text-gray-10"><UploadIcon/> Upload</div>
+              <div className="w-screen h-screen grid place-items-center">
+                <div className=" p-5 rounded-2xl sm:max-w-[425px] bg-gray-5 text-gray-10">
+                  <div>
+                    <div className="font-bold text-xl">Upload</div>
                   </div>
-                </DialogContent>
-              </DialogOverlay>}
+                  <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Modal contract={contract}/>
+                  </div>
+                </div>
+              </div>
+            </div>}
     </div>
   );
 };

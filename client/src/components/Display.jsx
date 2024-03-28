@@ -5,7 +5,7 @@ import { useModal } from "../context/ModalContext";
 
 const Display = ({ contract, account,setModalOpen }) => {
   // const [modal, setModal]=useState(setModalOpen);
-    const { openModal } = useModal(); 
+    const { openModal,modalOpen } = useModal(); 
   
     const handleShareButtonClick = () => {
       openModal(); 
@@ -63,7 +63,7 @@ const Display = ({ contract, account,setModalOpen }) => {
   return (
     <div className="w-[50vw]">
       <div className="overflow-x-auto pb-4 w-[80vw]">
-        <div className="flex gap-6">{data}</div>
+        <div className="flex gap-6">{data}{console.log(modalOpen)}</div>
       </div>
       <div className="py-6 flex gap-2">
         <input

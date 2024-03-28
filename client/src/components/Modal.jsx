@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const Modal = ({ setModalOpen, contract, ImadeHash }) => {
+const Modal = ({ contract }) => {
+    const [address,setaddress]=useState("")
   const sharing = async () => {
-    const address = document.querySelector(".address").value;
-    await contract.add(address,ImadeHash);
-    setModalOpen(false);
+    
+    // const address = document.getElementsByClassName("address").value;
+    console.log(address)
+    
+    await contract.add(address,"prashant");
+    
   };
   useEffect(() => {
     const accessList = async () => {
@@ -29,6 +33,7 @@ const Modal = ({ setModalOpen, contract, ImadeHash }) => {
           <div className="title">Share with</div>
           <div className="body">
             <input
+                onChange={()=>{setaddress(value)}}
               type="text"
               className="address"
               placeholder="Enter Address"
@@ -36,13 +41,13 @@ const Modal = ({ setModalOpen, contract, ImadeHash }) => {
           </div>
           <form id="myForm">
             <select id="selectNumber">
-              <option className="address">People With Access</option>
+              <option className="">People With Access</option>
             </select>
           </form>
           <div className="footer">
             <button
               onClick={() => {
-                setModalOpen(false);
+                
               }}
               id="cancelBtn"
             >
