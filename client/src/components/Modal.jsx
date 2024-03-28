@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
+import { useModal } from "../context/ModalContext";
 
 const Modal = ({ contract }) => {
     const [address,setaddress]=useState("")
+    const {imag}=useModal()
   const sharing = async () => {
     
     // const address = document.getElementsByClassName("address").value;
     console.log(address)
     
-    await contract.add(address,"prashant");
+    await contract.add(address,imag);
     
   };
   useEffect(() => {
@@ -33,11 +35,11 @@ const Modal = ({ contract }) => {
           <div className="title">Share with</div>
           <div className="body">
             <input
-                onChange={()=>{setaddress(value)}}
+                onChange={e => setaddress(e.target.value)}
               type="text"
               className="address"
               placeholder="Enter Address"
-            ></input>
+            />
           </div>
           <form id="myForm">
             <select id="selectNumber">

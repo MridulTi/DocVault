@@ -5,9 +5,11 @@ import { useModal } from "../context/ModalContext";
 
 const Display = ({ contract, account,setModalOpen }) => {
   // const [modal, setModal]=useState(setModalOpen);
-    const { openModal,modalOpen } = useModal(); 
+  
+    const { openModal,modalOpen, setimag } = useModal(); 
   
     const handleShareButtonClick = () => {
+      
       openModal(); 
     };
   const [data, setData] = useState("");
@@ -46,7 +48,7 @@ const Display = ({ contract, account,setModalOpen }) => {
               <div className="text-gray-10 px-6 py-2">
                 <h1 className="font-bold text-lg">Photos</h1>
                 <p className="text-gray-1 font-light text-md">Description</p>
-                <button onClick={handleShareButtonClick}>Share</button>
+                <button onClick={()=>{handleShareButtonClick();setimag(item)}}>Share</button>
                 
                 
               </div>
