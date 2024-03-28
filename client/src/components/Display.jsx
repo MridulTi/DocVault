@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Upload.css";
 
 const Display = ({ contract, account }) => {
   const [data, setData] = useState("");
@@ -10,10 +11,12 @@ const Display = ({ contract, account }) => {
         dataArray = await contract.display(Otheraddress);
         console.log(dataArray);
       } else {
+        console.log("kfnkdnf");
         dataArray = await contract.display(account);
+        console.log(dataArray);
       }
     } catch (e) {
-      alert("You don't have access");
+      alert(`You don't have access ${account}`);
     }
     const isEmpty = Object.keys(dataArray).length === 0;
 
@@ -47,7 +50,7 @@ const Display = ({ contract, account }) => {
         placeholder="Enter Address"
         className="address"
       ></input>
-      <button className="center button" onClick={getdata}>
+      <button className="center-button" onClick={getdata}>
         Get Data
       </button>
     </>
