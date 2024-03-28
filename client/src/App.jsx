@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import UploadContract from "../src/artifacts/Upload.json";
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./Page/Home/Home";
 import MainLayout from "./Page/More/MainLayout";
@@ -15,11 +16,11 @@ import Upload from "./components/Upload";
 export default function App(){
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [account, setAccount] = useState("");
-  const [contract, setContract] = useState("nfdn");
-  const [provider, setProvider] = useState("fkdkf");
+  const [contract, setContract] = useState(null);
+  const [provider, setProvider] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
-    console.log("jfskj");
+    
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     
     const loadProvider = async () => {
@@ -36,17 +37,17 @@ export default function App(){
         const address = await signer.getAddress();
         setAccount(address);
         setProvider(provider);
-        let contractAddress = "0x20a4B80C84584B1B41a9Ed4389322a2E5F82970f";
+        let contractAddress = "0xbdCde0d7EF5352cCdEEf232b1eb934907a2bcb44";
 
         const contractt = new ethers.Contract(
           contractAddress,
           UploadContract.abi,
           signer
         );
-        console.log(contract);
+        
         setContract(contractt);
         
-        console.log(provider);
+        
         
       } else {
         console.error("Metamask is not installed");
@@ -91,7 +92,7 @@ export default function App(){
         },
       ]);
       
-      console.log(provider);
+      
       return (
         <div className="">
           <RouterProvider router={router}/>
