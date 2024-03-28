@@ -1,3 +1,4 @@
+import { ShareIcon } from "lucide-react";
 import { useState } from "react";
 
 const Display = ({ contract, account }) => {
@@ -38,6 +39,9 @@ const Display = ({ contract, account }) => {
               <div className="text-gray-10 px-6 py-2">
                 <h1 className="font-bold text-lg">Photos</h1>
                 <p className="text-gray-1 font-light text-md">Description</p>
+                <button className="flex gap-4 bg-blues-3 px-12 rounded" onClick="">
+                  Share <ShareIcon/>
+                </button>
               </div>
             </a>
           </div>
@@ -50,11 +54,11 @@ const Display = ({ contract, account }) => {
   };
   return (
     <div className="w-[50vw]">
-    <div className="overflow-x-auto pb-4 w-[80vw]">
-      <div className="flex gap-6">{data}</div>
-    </div>
-    <div className="py-6 flex gap-2">
-      <input
+      <div className="overflow-x-auto pb-4 w-[80vw]">
+        <div className="flex gap-6">{data}</div>
+      </div>
+      <div className="py-6 flex gap-2">
+        <input
           type="text"
           placeholder="Enter Address"
           className="address px-5 py-2"
@@ -62,8 +66,8 @@ const Display = ({ contract, account }) => {
         <button className="bg-blues-3 px-12 rounded" onClick={getdata}>
           Get Data
         </button>
-    </div>
-    
+      </div>
+
     </div>
   );
 };
