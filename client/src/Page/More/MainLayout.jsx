@@ -12,17 +12,21 @@ import { DialogFooter, DialogHeader, DialogOverlay } from "../../components/ui/d
 import { useEffect, useState } from "react";
 import { AccCard } from "../../lists/Data";
 import { ChatCard } from "../../components/Cards";
+import { useModal } from "../../context/ModalContext";
 // import { Toast } from "../../components/ui/toast";
 // import Footer from "../../Components/Footer/Footer";
 // import Navbar from "../../Components/Navbar/Navbar";
 
 const MainLayout = ({contract,account,provider, setModalOpen }) => {
   const { user } = useAuth0();
-  const [Modal, setModal] = useState(setModalOpen)
+  const {modalOpen,closeModal}=useModal();
   const location = useLocation();
   const [Active, setActive] = useState(false)
   const isButtonActive = (to) => {
     return location.pathname === to;
+  };
+  const handleclose = () => {
+    closeModal(); 
   };
   useEffect(() => {
     // setAlert(false);
@@ -88,14 +92,14 @@ const MainLayout = ({contract,account,provider, setModalOpen }) => {
           })}
         </div>
       )}
-      {Modal&&<DialogOverlay className="w-screen h-screen grid place-items-center">
+      {modalOpen&&<DialogOverlay className="w-screen h-screen grid place-items-center">
                 <DialogContent className=" p-5 rounded-2xl sm:max-w-[425px] bg-gray-5 text-gray-10">
                   <DialogHeader>
                     <DialogTitle className="font-bold text-xl">Upload</DialogTitle>
                   </DialogHeader>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
                     <Upload contract={contract} account={account} provider={provider}/>
-                    <button onClick={setModal(false)}>close</button>
+                    <button onClick={handleclose}>close</button>
                   </div>
                 </DialogContent>
               </DialogOverlay>}
