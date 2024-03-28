@@ -11,7 +11,7 @@ import { conclusion } from '../../lists/Data'
 import Display from '../../components/Display'
 
 
-function Home({contract ,account}) {
+function Home({contract ,account, setModalOpen}) {
   const { user, isAuthenticated, isLoading } = useAuth0();
   return (
     <div className='grid pl-64 py-4 w-[86vw] text-gray-5'>
@@ -35,7 +35,7 @@ function Home({contract ,account}) {
         <DocsCard/>
         <DocsCard/>
         <DocsCard/> */}
-        <Display contract={contract} account={account}/>
+        <Display contract={contract} account={account} setModalOpen={setModalOpen}/>
 
       </div>
       <h1 className='font-bold text-2xl py-4 pt-6 tracking-wider'>Activity</h1>

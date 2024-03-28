@@ -11,6 +11,7 @@ import Friends from "./Page/Home/Friends";
 //import { Upload } from "lucide-react";
 import {ethers} from 'ethers'
 import Upload from "./components/Upload";
+import Modal from "./components/Modal";
 
 // import Monitoring from "./Pages/Monitoring/Monitoring";
 export default function App(){
@@ -37,7 +38,7 @@ export default function App(){
         const address = await signer.getAddress();
         setAccount(address);
         setProvider(provider);
-        let contractAddress = "0x5253a9A67004ACC4802D7F5ca3f417300a62C973";
+        let contractAddress = "0x5f6633e7BBfFe078a4204e67fad35D4d55d5FCAf";
 
         const contractt = new ethers.Contract(
           contractAddress,
@@ -59,12 +60,12 @@ export default function App(){
     const router = createBrowserRouter([
         {
           path:"/",
-          element:isAuthenticated?<MainLayout contract={contract} account={account} provider={provider}/>:<Login/>,
+          element:isAuthenticated?<MainLayout contract={contract} account={account} provider={provider} setModalOpen={modalOpen}/>:<Login/>,
           children:[
 
             {
               path: "/",
-              element:<Home contract={contract} account={account}/>
+              element:<Home contract={contract} account={account} setModalOpen={modalOpen}/>
             },
             {
               path: "/friends",

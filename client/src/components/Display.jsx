@@ -1,8 +1,9 @@
 import { ShareIcon } from "lucide-react";
 import { useState } from "react";
+import Modal from "./Modal";
 
-const Display = ({ contract, account }) => {
-
+const Display = ({ contract, account,setModalOpen }) => {
+  const [modal, setModal]=useState(setModalOpen);
   const [data, setData] = useState("");
   const getdata = async () => {
     let dataArray;
@@ -30,7 +31,7 @@ const Display = ({ contract, account }) => {
       const images = str_array.map((item, i) => {
         return (
           <div className="rounded-xl w-72 aspect-square  grid overflow-hidden bg-gray-5 shadow-lg">
-            <a href={item} key={i} target="_blank">
+            
               <img
                 key={i}
                 className="border border-bottom-2 border-gray-10 object-center object-cover aspect-video items-center"
@@ -39,11 +40,12 @@ const Display = ({ contract, account }) => {
               <div className="text-gray-10 px-6 py-2">
                 <h1 className="font-bold text-lg">Photos</h1>
                 <p className="text-gray-1 font-light text-md">Description</p>
-                <button className="flex gap-4 bg-blues-3 px-12 rounded" onClick="">
-                  Share <ShareIcon/>
-                </button>
+                <button onClick={setModal(true)}>Share</button>
+                
+                
               </div>
-            </a>
+            
+
           </div>
         );
       });

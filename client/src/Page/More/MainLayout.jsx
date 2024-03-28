@@ -16,9 +16,9 @@ import { ChatCard } from "../../components/Cards";
 // import Footer from "../../Components/Footer/Footer";
 // import Navbar from "../../Components/Navbar/Navbar";
 
-const MainLayout = ({contract,account,provider}) => {
+const MainLayout = ({contract,account,provider, setModalOpen }) => {
   const { user } = useAuth0();
-  const [modal, setmodal] = useState(false)
+  const [Modal, setModal] = useState(setModalOpen)
   const location = useLocation();
   const [Active, setActive] = useState(false)
   const isButtonActive = (to) => {
@@ -88,6 +88,17 @@ const MainLayout = ({contract,account,provider}) => {
           })}
         </div>
       )}
+      {Modal&&<DialogOverlay className="w-screen h-screen grid place-items-center">
+                <DialogContent className=" p-5 rounded-2xl sm:max-w-[425px] bg-gray-5 text-gray-10">
+                  <DialogHeader>
+                    <DialogTitle className="font-bold text-xl">Upload</DialogTitle>
+                  </DialogHeader>
+                  <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Upload contract={contract} account={account} provider={provider}/>
+                    <button onClick={setModal(false)}>close</button>
+                  </div>
+                </DialogContent>
+              </DialogOverlay>}
     </div>
   );
 };
