@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import UploadContract from "../src/artifacts/Upload.json";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -8,11 +7,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Login from "./Page/More/Login";
 import Friends from "./Page/Home/Friends";
 //import { Upload } from "lucide-react";
-import {ethers} from 'ethers'
+import { ethers } from "ethers";
 import Upload from "./components/Upload";
 
 // import Monitoring from "./Pages/Monitoring/Monitoring";
-export default function App(){
+export default function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [account, setAccount] = useState("");
   const [contract, setContract] = useState("nfdn");
@@ -21,7 +20,7 @@ export default function App(){
   useEffect(() => {
     console.log("jfskj");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    
+
     const loadProvider = async () => {
       if (provider) {
         window.ethereum.on("chainChanged", () => {
@@ -36,7 +35,7 @@ export default function App(){
         const address = await signer.getAddress();
         setAccount(address);
         setProvider(provider);
-        let contractAddress = "0x20a4B80C84584B1B41a9Ed4389322a2E5F82970f";
+        let contractAddress = "0x071A695D4F5BEeF138776B9722B58Cc7BE142B50";
 
         const contractt = new ethers.Contract(
           contractAddress,
@@ -45,9 +44,8 @@ export default function App(){
         );
         console.log(contract);
         setContract(contractt);
-        
+
         console.log(provider);
-        
       } else {
         console.error("Metamask is not installed");
       }
@@ -55,46 +53,46 @@ export default function App(){
     provider && loadProvider();
   }, []);
 
-    const router = createBrowserRouter([
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: isAuthenticated ? (
+        <MainLayout contract={contract} account={account} provider={provider} />
+      ) : (
+        <Login />
+      ),
+      children: [
         {
-          path:"/",
-          element:isAuthenticated?<MainLayout contract={contract} account={account} provider={provider}/>:<Login/>,
-          children:[
-
-            {
-              path: "/",
-              element:<Home contract={contract} account={account}/>
-            },
-            {
-              path: "/friends",
-              element:<Friends/>
-            },
-            {
-            }
-            // {
-            //   path: "/monitor",
-            //   children:[
-            //     {
-                  
-            //       path:"/monitor/:Slugs",
-            //       element:<Monitoring/>
-            //     }
-            //   ]
-            // },
-            // {
-            //   path: "/about",
-            //   element: <About/>,
-            // },
-            
-         
-          ]
+          path: "/",
+          element: <Home contract={contract} account={account} />,
         },
-      ]);
-      
-      console.log(provider);
-      return (
-        <div className="">
-          <RouterProvider router={router}/>
-        </div>
-      )
+        {
+          path: "/friends",
+          element: <Friends />,
+        },
+        {},
+        // {
+        //   path: "/monitor",
+        //   children:[
+        //     {
+
+        //       path:"/monitor/:Slugs",
+        //       element:<Monitoring/>
+        //     }
+        //   ]
+        // },
+        // {
+        //   path: "/about",
+        //   element: <About/>,
+        // },
+      ],
+    },
+  ]);
+
+  console.log(provider);
+  return (
+    <div className="">
+      <RouterProvider router={router} />
+    </div>
+  );
 }
