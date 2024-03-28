@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.hello{
-    background-color: #151515ac;
+.hello {
+  background-color: #151515ac;
+}
+
+. {
 }
