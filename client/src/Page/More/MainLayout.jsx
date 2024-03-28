@@ -9,7 +9,7 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, Dia
 import { CopyIcon, Dock, GroupIcon, HomeIcon, UploadIcon, } from "lucide-react";
 import { Button, buttonVariants } from "../../components/ui/button";
 import { DialogFooter, DialogHeader, DialogOverlay } from "../../components/ui/dialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AccCard } from "../../lists/Data";
 import { ChatCard } from "../../components/Cards";
 // import { Toast } from "../../components/ui/toast";
@@ -24,6 +24,13 @@ const MainLayout = ({contract,account,provider}) => {
   const isButtonActive = (to) => {
     return location.pathname === to;
   };
+  useEffect(() => {
+    // setAlert(false);
+
+    const isMonitorPage = window.location.pathname.includes("/friends");
+    setActive(isMonitorPage);
+
+  }, [location.pathname]);
 
   return (
     <div className="w-full min-h-screen h-fit bg-grey-1 text-gray-5">
@@ -70,7 +77,7 @@ const MainLayout = ({contract,account,provider}) => {
 
         </HoverCardContent>
       </HoverCard>
-      {isButtonActive("/friends") && (
+      {Active&& (
         <div className=" pt-16 bg-base-primary absolute z-10 right-0 top-0 w-64 h-[100vh] flex flex-col gap-4">
           {AccCard.map((data) => {
             return (

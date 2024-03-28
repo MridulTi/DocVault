@@ -22,30 +22,30 @@ export const AccCard=[
     },
     {   
         img:"",
-        name:"User_1"
+        name:"User_2"
     },
     {   
         img:"",
-        name:"User_1"
+        name:"User_3"
     },
     {   
         img:"",
-        name:"User_1"
+        name:"User_4"
     },
     {   
         img:"",
-        name:"User_1"
+        name:"User_5"
     },
     {   
         img:"",
-        name:"User_1"
+        name:"User_6"
     },
     {   
         img:"",
-        name:"User_1"
+        name:"User_7"
     },
     {   
         img:"",
-        name:"User_1"
+        name:"User_8"
     }
 ]

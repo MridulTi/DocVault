@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import { BookDashedIcon, PackageIcon } from 'lucide-react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export function ConclusionCards(props) {
   return (
@@ -32,13 +33,13 @@ export function DocsCard() {
 export function ChatCard(props) {
   const {user}=useAuth0();
   return (
-    <div className='hover:bg-gray-6 px-4 py-2 flex gap-4 place-items-center'>
+    <Link to={`/friends/${props.name}`}><div className='hover:bg-gray-6 px-4 py-2 flex gap-4 place-items-center'>
       <Avatar className="w-8">
         <AvatarImage className="rounded-full" src='https://github.com/shadcn.png' />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       <h1 className='tracking-widest text-gray-3'>{props.name}</h1>
 
-    </div>
+    </div></Link>
   )
 }

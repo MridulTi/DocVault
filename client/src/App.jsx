@@ -68,7 +68,13 @@ export default function App(){
             },
             {
               path: "/friends",
-              element:<Friends/>
+              children:[
+                {
+                  path:"/friends/:Slugs",
+                  element:<Friends/>
+
+                }
+              ]
             },
             {
             }
