@@ -26,8 +26,8 @@ const MainLayout = ({contract,account,provider}) => {
   };
 
   return (
-    <div className="w-screen h-screen bg-grey-1 text-gray-5">
-      <div className='absolute text-gray-5 bg-base-primary grid justify-center w-52 pt-6 h-screen'>
+    <div className="w-full min-h-screen h-fit bg-grey-1 text-gray-5">
+      <div className='fixed text-gray-5 bg-base-primary grid justify-center w-52 pt-6 h-screen'>
         <div className="text-center">
           <h1 className='flex gap-4 justify-start px-4 font-bold text-xl pb-16'><Dock /> Doc-Vault</h1>
           <ul className='grid gap-2 text-gray-3 text-md font-semibold'>

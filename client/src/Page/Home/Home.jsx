@@ -39,6 +39,9 @@ function Home({contract ,account}) {
 
       </div>
       <h1 className='font-bold text-2xl py-4 pt-6 tracking-wider'>Activity</h1>
+      <div>
+
+      </div>
     </div>
   )
 }
