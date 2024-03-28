@@ -1,10 +1,6 @@
 
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
 import UploadContract from "../src/artifacts/Upload.json";
-=======
-// import UploadContract from "../../build/contracts/Upload.json";
->>>>>>> 5b9c2faf5856f7b161d7de37f76da19e691ddb23
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./Page/Home/Home";
 import MainLayout from "./Page/More/MainLayout";
@@ -102,4 +98,3 @@ export default function App(){
         </div>
       )
 }
-// a4b8dffa023151d7265889a30bc14680dc903b85
