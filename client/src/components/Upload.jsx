@@ -1,6 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
+<<<<<<< HEAD
 import "./Upload.css";
+=======
+import './Upload.css'
+import { Button } from "./ui/button";
+>>>>>>> f0ff6720180924b0092d5eef1044a35e50944869
 
 const Upload = ({ contract, account }) => {
   const [file, setFile] = useState(null);
@@ -23,7 +28,12 @@ const Upload = ({ contract, account }) => {
           },
         });
         const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
+<<<<<<< HEAD
         contract.add(account, ImgHash);
+=======
+        contract.add(account,ImgHash);
+        contract.allow(account)
+>>>>>>> f0ff6720180924b0092d5eef1044a35e50944869
         alert("Successfully Image Uploaded");
         setFileName("No image selected");
         setFile(null);
@@ -47,20 +57,27 @@ const Upload = ({ contract, account }) => {
     e.preventDefault();
   };
   return (
+<<<<<<< HEAD
     <div className="top">
       <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="file-upload" className="choose">
+=======
+    <div className="" >
+      <form className="grid justify-center" onSubmit={handleSubmit}>
+        {/* <label htmlFor="file" ">
+>>>>>>> f0ff6720180924b0092d5eef1044a35e50944869
           Choose Image
-        </label>
+        </label> */}
         <input
           disabled={!account}
           type="file"
           id="file-upload"
           name="data"
+          className="p-5"
           onChange={retrieveFile}
         />
-        <span className="textArea">Image: {fileName}</span>
-        <button type="submit" className="upload" disabled={!file}>
+        {/* <span className="pb-4">Image: {fileName}</span> */}
+        <button variant="secondary" type="submit" className="bg-blues-3 text-gray-5 p-2 rounded-lg" disabled={!file}>
           Upload File
         </button>
       </form>
