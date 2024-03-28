@@ -3,15 +3,16 @@ import { useState } from "react";
 import Modal from "./Modal";
 import { useModal } from "../context/ModalContext";
 
-const Display = ({ contract, account,setModalOpen }) => {
+import "./Upload.css";
+
+const Display = ({ contract, account, setModalOpen }) => {
   // const [modal, setModal]=useState(setModalOpen);
-  
-    const { openModal,modalOpen, setimag } = useModal(); 
-  
-    const handleShareButtonClick = () => {
-      
-      openModal(); 
-    };
+
+  const { openModal, modalOpen, setimag } = useModal();
+
+  const handleShareButtonClick = () => {
+    openModal();
+  };
   const [data, setData] = useState("");
   const getdata = async () => {
     let dataArray;
@@ -26,7 +27,6 @@ const Display = ({ contract, account,setModalOpen }) => {
         console.log(dataArray);
       }
     } catch (e) {
-
       alert(`You don't have access ${account}`);
     }
     const isEmpty = Object.keys(dataArray).length === 0;
@@ -39,21 +39,24 @@ const Display = ({ contract, account,setModalOpen }) => {
       const images = str_array.map((item, i) => {
         return (
           <div className="rounded-xl w-72 aspect-square  grid overflow-hidden bg-gray-5 shadow-lg">
-            
-              <img
-                key={i}
-                className="border border-bottom-2 border-gray-10 object-center object-cover aspect-video items-center"
-                src={item}
-                alt={item} />
-              <div className="text-gray-10 px-6 py-2">
-                <h1 className="font-bold text-lg">Photos</h1>
-                <p className="text-gray-1 font-light text-md">Description</p>
-                <button onClick={()=>{handleShareButtonClick();setimag(item)}}>Share</button>
-                
-                
-              </div>
-            
-
+            <img
+              key={i}
+              className="border border-bottom-2 border-gray-10 object-center object-cover aspect-video items-center"
+              src={item}
+              alt={item}
+            />
+            <div className="text-gray-10 px-6 py-2">
+              <h1 className="font-bold text-lg">Photos</h1>
+              <p className="text-gray-1 font-light text-md">Description</p>
+              <button
+                onClick={() => {
+                  handleShareButtonClick();
+                  setimag(item);
+                }}
+              >
+                Share
+              </button>
+            </div>
           </div>
         );
       });
@@ -65,7 +68,10 @@ const Display = ({ contract, account,setModalOpen }) => {
   return (
     <div className="w-[50vw]">
       <div className="overflow-x-auto pb-4 w-[80vw]">
-        <div className="flex gap-6">{data}{console.log(modalOpen)}</div>
+        <div className="flex gap-6">
+          {data}
+          {console.log(modalOpen)}
+        </div>
       </div>
       <div className="py-6 flex gap-2">
         <input
@@ -77,7 +83,6 @@ const Display = ({ contract, account,setModalOpen }) => {
           Get Data
         </button>
       </div>
-
     </div>
   );
 };
