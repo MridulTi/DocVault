@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 import ChatAppContract from "../../artifacts/ChatApp.json"
-import Web3Modal from "web3modal"
+
 import { ChatAppAddress } from '../../assets/constant'
 export const CheckIfWalletConneted = async () => {
   try{
