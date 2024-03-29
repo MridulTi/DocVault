@@ -1,0 +1,1 @@
+export const ChatAppAddress="0xe7f6295716974b421cc5c88BDf02Cfdda45E5CEB"

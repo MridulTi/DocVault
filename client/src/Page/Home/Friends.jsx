@@ -3,6 +3,8 @@ import React from 'react'
 import { Input } from '../../components/ui/input'
 
 function Friends() {
+
+    
   return (
     <div className='grid justify-center w-[96vw] py-2 text-gray-5'>
       <div className='bg-gray-6 min-h-[97vh] text-center w-[68vw] rounded-2xl'>

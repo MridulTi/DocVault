@@ -11,6 +11,7 @@ import Friends from "./Page/Home/Friends";
 import { ethers } from "ethers";
 import Upload from "./components/Upload";
 import Modal from "./components/Modal";
+import { ChatAppProvider } from "./context/chatAppContext";
 
 // import Monitoring from "./Pages/Monitoring/Monitoring";
 export default function App() {
@@ -82,7 +83,7 @@ export default function App() {
           children: [
             {
               path: "/friends/:Slugs",
-              element: <Friends />,
+              element: <ChatAppProvider><Friends /></ChatAppProvider>,
             },
           ],
         },
