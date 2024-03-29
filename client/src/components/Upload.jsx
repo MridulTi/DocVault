@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import './Upload.css'
 import { Button } from "./ui/button";
+import { providers } from "ethers";
 
 const Upload = ({ contract, account, provider }) => {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No image selected");
+  
+    const handleConfirmation = () => {
+      window.location.reload(); // Reload the page upon transaction confirmation
+    };
+
+    
+
+    
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (file) {
@@ -25,18 +35,34 @@ const Upload = ({ contract, account, provider }) => {
         });
         const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
         
-        contract.add(account,ImgHash);
         
-        alert("Successfully Image Uploaded");
-        setFileName("No image selected");
-        setFile(null);
+        
+        contract.add(account, ImgHash)
+       
+  .then(() => {
+    setTimeout(handleConfirmation,5000)
+    alert("Successfully Image Uploaded");
+    setFileName("No image selected");
+    setFile(null);
+  })
+  
+       
+        // window.ethereum.request({
+        //   "method": "eth_getTransactionByHash",
+        //   "params": [a.hash]
+        // }).then((receipt)=>{console.log(receipt)})
+
+        
+        // alert("Successfully Image Uploaded");
+        // setFileName("No image selected");
+        // setFile(null);
+        
       } catch (e) {
         alert("Unable to upload image to Pinata");
       }
     }
-    alert("Successfully Image Uploaded");
-    setFileName("No image selected");
-    setFile(null);
+  
+  
   };
   const retrieveFile = (e) => {
     const data = e.target.files[0]; //files array of files object

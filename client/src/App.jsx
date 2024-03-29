@@ -22,7 +22,7 @@ export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-
+    
     const loadProvider = async () => {
       if (provider) {
         window.ethereum.on("chainChanged", () => {
@@ -38,7 +38,7 @@ export default function App() {
         setAccount(address);
         console.log(typeof address);
         setProvider(provider);
-        let contractAddress = "0xa159616B5bb750050EcDC422FC174369B1A5817a";
+        let contractAddress = "0x81d2E0040a4eBDEA7067110222217AAfF223615b";
 
         const contractt = new ethers.Contract(
           contractAddress,
