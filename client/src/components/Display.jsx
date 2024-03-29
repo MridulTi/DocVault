@@ -83,16 +83,15 @@ const Display = ({ contract, account, setModalOpen }) => {
 
   return (
     <div className="w-[50vw]">
-      <div className="overflow-x-auto pb-4 w-[80vw]">
-        <div className="flex gap-6">
+      <div className="pb-4 w-[80vw]">
+        <div className="flex gap-6  grid grid-cols-3">
           {data}
           {console.log(modalOpen)}
         </div>
-
-        <button onClick={handleConfirmation} className="reloadButton">
-          reload
-        </button>
       </div>
+      <button onClick={handleConfirmation} className="reloadButton">
+        reload
+      </button>
     </div>
   );
 };
