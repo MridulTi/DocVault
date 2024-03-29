@@ -30,11 +30,11 @@ export function DocsCard() {
     </div>
   )
 }
-export function ChatCard({el}) {
-  console.log(el)
+export function ChatCard({el,readMessage,FriendMsg,account,userName,currentUserName,currentUserAddress}) {
+  // console.log(el)
   // const {user}=useAuth0();
   return (
-    <Link ><div className='hover:bg-gray-6 px-4 py-2 flex gap-4 place-items-center'>
+    <Link onClick={()=>{readMessage(account)}}><div className='hover:bg-gray-6 px-4 py-2 flex gap-4 place-items-center'>
       <Avatar className="w-12">
         <AvatarImage className="rounded-full" src='https://github.com/shadcn.png' />
         <AvatarFallback>CN</AvatarFallback>
