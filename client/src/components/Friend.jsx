@@ -1,4 +1,7 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
+import { ChatAppContext } from "../context/chatAppContext";
+import { AccCard } from "../lists/Data";
+import { ChatCard, UserCard } from "./Cards";
 
 const Friend=()=>{
 
@@ -6,26 +9,30 @@ const Friend=()=>{
     const {
         sendMessage,
         account,
-        friendList,
+        FriendLists,
         readMessage,
         userName,
+        getMyFriend,
         loading,
         FriendMsg,
         currentUserAddress,
         currentUserName,
         readUser,
-    }=useContext(ChatAppContect);
-
+    }=useContext(ChatAppContext);
     return (
         <div className="">
             <div className="">
                 <div className="">
-                    {friendList.map((el,i)=>{
-                        <Card key={i+1} el={el} i={i} readMessage={readMessage} readUser={readUser}/>
+                    {/* {console.log(FriendLists)} */}
+                    {FriendLists.map((el)=>{
+                        return(
+                            <ChatCard el={el}/>
+
+                        )
                     })}
                 </div>
                 <div className="">
-                    <Chat funtionName={sendMessage} readMessage={readMessage} FriendMsg={FriendMsg} account={account} userName={userName} loading={loading} currentUserName={currentUserName} currentUserAddress={currentUserAddress}/>
+                    {/* <Chat funtionName={sendMessage} readMessage={readMessage} FriendMsg={FriendMsg} account={account} userName={userName} loading={loading} currentUserName={currentUserName} currentUserAddress={currentUserAddress}/> */}
                 </div>
             </div>
         </div>

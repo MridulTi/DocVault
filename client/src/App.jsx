@@ -13,6 +13,7 @@ import Upload from "./components/Upload";
 import Modal from "./components/Modal";
 import { ChatAppProvider } from "./context/chatAppContext";
 import AllUsers from "./Page/Friends/AllUsers";
+import Chat from "./Page/Friends/Chat";
 
 // import Monitoring from "./Pages/Monitoring/Monitoring";
 export default function App() {
@@ -88,6 +89,10 @@ export default function App() {
             {
               path:"/friends/allusers",
               element:<ChatAppProvider><AllUsers/></ChatAppProvider>
+            },
+            {
+              path:"/friends/chat",
+              element:<ChatAppProvider><Chat/></ChatAppProvider>
             },
             {
               path: "/friends/:Slugs",

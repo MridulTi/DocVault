@@ -75,12 +75,14 @@ export const ChatAppProvider=({children})=>{
     // Add friend
     const addFriends=async({name,accounAddress})=>{
         try {
-            if(name||accounAddress) return setError("Please provide name and account")
+            if(name||accounAddress) console.log("Please provide name and account",name,accounAddress)
             const Contract=await connectingwithContract();
             const addMyFriend=await Contract.addFriend(accounAddress,name);
-            setLoading(true)
+            // setLoading(true)
             await addMyFriend.wait();
-            setLoading(false)
+            console.log("hi")
+            // getMyFriend()
+            // setLoading(false)
             window.location.reload()
 
         } catch (error) {
@@ -109,8 +111,22 @@ export const ChatAppProvider=({children})=>{
         setcurrentUserName(userName);
         setcurrentUserAddress(userAddress);
     }
+    const getMyFriend=async()=>{
+        const Contract=await connectingwithContract();
+        const Friends=await Contract.getMyFriendList();
+        setFriendLists(Friends)
+    }
     return(
-        <ChatAppContext.Provider value={{readMessage,CheckIfWalletConneted,connectWallet,createAccount,addFriends,sendMessage,readUser,account,UserName,FriendLists,FriendMsg,Loading,UserList,Error,currentUserAddress,currentUserName}}>
+        <ChatAppContext.Provider value={{
+            readMessage,
+            CheckIfWalletConneted,
+            connectWallet,
+            createAccount,
+            addFriends,
+            getMyFriend,
+            sendMessage,
+            readUser,
+            account,UserName,FriendLists,FriendMsg,Loading,UserList,Error,currentUserAddress,currentUserName}}>
             {children}
         </ChatAppContext.Provider>
     )
