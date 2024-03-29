@@ -33,7 +33,7 @@ export function DocsCard() {
 export function ChatCard(props) {
   const {user}=useAuth0();
   return (
-    <Link to={`/friends/${props.name}`}><div className='hover:bg-gray-6 px-4 py-2 flex gap-4 place-items-center'>
+    <Link to={`/friends/chat/${props.name}`}><div className='hover:bg-gray-6 px-4 py-2 flex gap-4 place-items-center'>
       <Avatar className="w-8">
         <AvatarImage className="rounded-full" src='https://github.com/shadcn.png' />
         <AvatarFallback>CN</AvatarFallback>
@@ -41,5 +41,21 @@ export function ChatCard(props) {
       <h1 className='tracking-widest text-gray-3'>{props.name}</h1>
 
     </div></Link>
+  )
+}
+export function UserCard({el,addFriends}){
+  console.log()
+  return(
+    <div>
+      <Avatar className="w-8">
+        <AvatarImage className="rounded-full" src='https://github.com/shadcn.png' />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      <p>{el.name}</p>
+      <p>{el.accountaddress.slice(0,25)}</p>
+      <button
+        onClick={()=>addFriends({name:el.name,accountaddress:el.accountaddress})}
+      >Add Friends</button>
+    </div>
   )
 }

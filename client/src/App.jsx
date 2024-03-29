@@ -6,12 +6,13 @@ import Home from "./Page/Home/Home";
 import MainLayout from "./Page/More/MainLayout";
 import { useAuth0 } from "@auth0/auth0-react";
 import Login from "./Page/More/Login";
-import Friends from "./Page/Home/Friends";
+import Friends from "./Page/Friends/Friends";
 //import { Upload } from "lucide-react";
 import { ethers } from "ethers";
 import Upload from "./components/Upload";
 import Modal from "./components/Modal";
 import { ChatAppProvider } from "./context/chatAppContext";
+import AllUsers from "./Page/Friends/AllUsers";
 
 // import Monitoring from "./Pages/Monitoring/Monitoring";
 export default function App() {
@@ -82,8 +83,16 @@ export default function App() {
           path: "/friends",
           children: [
             {
+              path:"/friends",
+              element:<ChatAppProvider><Friends addresss={account}/></ChatAppProvider>
+            },
+            {
+              path:"/friends/allusers",
+              element:<ChatAppProvider><AllUsers/></ChatAppProvider>
+            },
+            {
               path: "/friends/:Slugs",
-              element: <ChatAppProvider><Friends /></ChatAppProvider>,
+              element: <ChatAppProvider><Friends addres={account}/></ChatAppProvider>,
             },
           ],
         },

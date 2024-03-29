@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import './Upload.css'
 import { Button } from "./ui/button";
+import { providers } from "ethers";
 
 const Upload = ({ contract, account, provider }) => {
   const [file, setFile] = useState(null);
@@ -24,9 +25,7 @@ const Upload = ({ contract, account, provider }) => {
           },
         });
         const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
-        
         contract.add(account,ImgHash);
-        
         alert("Successfully Image Uploaded");
         setFileName("No image selected");
         setFile(null);

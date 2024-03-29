@@ -32,7 +32,7 @@ const MainLayout = ({contract,account,provider, setModalOpen }) => {
   useEffect(() => {
     // setAlert(false);
 
-    const isMonitorPage = window.location.pathname.includes("/friends");
+    const isMonitorPage = window.location.pathname.includes("/chat");
     setActive(isMonitorPage);
 
   }, [location.pathname]);
