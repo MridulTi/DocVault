@@ -3,7 +3,7 @@ import { useModal } from "../context/ModalContext";
 
 const Modal = ({ contract }) => {
     const [address,setaddress]=useState("")
-    const {imag}=useModal()
+    const {imag,closeModal}=useModal()
   const sharing = async () => {
     
     // const address = document.getElementsByClassName("address").value;
@@ -30,32 +30,33 @@ const Modal = ({ contract }) => {
   }, [contract]);
   return (
     <>
-      <div className="modalBackground">
+      <div className="modalBackground p-5">
         <div className="modalContainer">
-          <div className="title">Share with</div>
+          <div className="title font-semibold">Share with</div>
           <div className="body">
             <input
                 onChange={e => setaddress(e.target.value)}
               type="text"
-              className="address"
+              className="address border p-2"
               placeholder="Enter Address"
             />
           </div>
-          <form id="myForm">
+          <form id="myForm pt-4">
             <select id="selectNumber">
-              <option className="">People With Access</option>
+              <option className="border">People With Access</option>
             </select>
           </form>
-          <div className="footer">
+          <div className="footer flex gap-4 pt-6">
             <button
-              onClick={() => {
-                
-              }}
+              onClick={closeModal}
+              className="py-2 px-5 bg-semantics-2 rounded-lg text-gray-5"
               id="cancelBtn"
             >
               Cancel
             </button>
-            <button onClick={() => sharing()}>Share</button>
+            <button
+            className="py-2 px-5 bg-semantics-1 rounded-lg text-gray-5"
+             onClick={() => sharing()}>Share</button>
           </div>
         </div>
       </div>

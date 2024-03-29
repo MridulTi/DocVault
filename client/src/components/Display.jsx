@@ -1,4 +1,4 @@
-import { ShareIcon } from "lucide-react";
+import { Link, Share2Icon, ShareIcon } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
 import { useModal } from "../context/ModalContext";
@@ -45,17 +45,23 @@ const Display = ({ contract, account, setModalOpen }) => {
               src={item}
               alt={item}
             />
-            <div className="text-gray-10 px-6 py-2">
+            <div className="text-gray-10 px-6 py-2 h-fit py-2">
               <h1 className="font-bold text-lg">Photos</h1>
               <p className="text-gray-1 font-light text-md">Description</p>
-              <button
+              
+              <div className="flex gap-2 place-items-center">
+              <a href={item}><button className="px-4 py-1 bg-blues-3 text-gray-5 font-semibold">Show More</button></a>
+                
+                <p
                 onClick={() => {
                   handleShareButtonClick();
                   setimag(item);
                 }}
+                className="px-4 py-2 text-gray-10"
               >
-                Share
-              </button>
+                <Share2Icon className="cursor-pointer"/>
+                </p>
+            </div>
             </div>
           </div>
         );

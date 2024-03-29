@@ -93,9 +93,8 @@ const MainLayout = ({contract,account,provider, setModalOpen }) => {
           })}
         </div>
       )}
-      {modalOpen&&<div>
-              <div className="flex w-52 gap-4 px-3 py-2 rounded-lg hover:bg-gray-5 hover:text-gray-10"><UploadIcon/> Upload</div>
-              <div className="w-screen h-screen grid place-items-center">
+      {modalOpen&&<div className="absolute top-0">
+              <div className="w-screen h-screen grid place-items-center hello">
                 <div className=" p-5 rounded-2xl sm:max-w-[425px] bg-gray-5 text-gray-10">
                   <div>
                     <div className="font-bold text-xl">Upload</div>

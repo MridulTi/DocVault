@@ -37,7 +37,7 @@ export default function App() {
         setAccount(address);
         console.log(typeof address);
         setProvider(provider);
-        let contractAddress = "0x16c179D4b2Dc3224aA6933403A80e9824A3d8640";
+        let contractAddress = "0xa159616B5bb750050EcDC422FC174369B1A5817a";
 
         const contractt = new ethers.Contract(
           contractAddress,
