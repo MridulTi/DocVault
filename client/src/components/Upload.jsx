@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "./Upload.css";
 import { Button } from "./ui/button";
@@ -7,10 +7,7 @@ import { providers } from "ethers";
 const Upload = ({ contract, account, provider }) => {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No image selected");
-
-  // const handleConfirmation = () => {
-  //   window.location.reload(); // Reload the page upon transaction confirmation
-  // };
+  const [fileDescription, setFileDescription] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +15,8 @@ const Upload = ({ contract, account, provider }) => {
       try {
         const formData = new FormData();
         formData.append("file", file);
+        formData.append("name", fileName); // Add file name to form data
+        formData.append("description", fileDescription); // Add file description to form data
 
         const resFile = await axios({
           method: "post",
@@ -31,32 +30,20 @@ const Upload = ({ contract, account, provider }) => {
         });
         const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
 
-        contract
-          .add(account, ImgHash)
-
-          .then(() => {
-            // setTimeout(handleConfirmation, 5000);
-            alert("Successfully Image Uploaded");
-            setFileName("No image selected");
-            setFile(null);
-          });
-
-        // window.ethereum.request({
-        //   "method": "eth_getTransactionByHash",
-        //   "params": [a.hash]
-        // }).then((receipt)=>{console.log(receipt)})
-
-        // alert("Successfully Image Uploaded");
-        // setFileName("No image selected");
-        // setFile(null);
+        contract.add(account, ImgHash).then(() => {
+          alert("Successfully Image Uploaded");
+          setFileName("No image selected");
+          setFile(null);
+          setFileDescription(""); // Clear file description after upload
+        });
       } catch (e) {
         alert("Unable to upload image to Pinata");
       }
     }
   };
+
   const retrieveFile = (e) => {
-    const data = e.target.files[0]; //files array of files object
-    // console.log(data);
+    const data = e.target.files[0];
     const reader = new window.FileReader();
     reader.readAsArrayBuffer(data);
     reader.onloadend = () => {
@@ -65,12 +52,10 @@ const Upload = ({ contract, account, provider }) => {
     setFileName(e.target.files[0].name);
     e.preventDefault();
   };
+
   return (
     <div className="">
       <form className="grid justify-center" onSubmit={handleSubmit}>
-        {/* <label htmlFor="file" ">
-          Choose Image
-        </label> */}
         <input
           disabled={!account}
           type="file"
@@ -79,7 +64,19 @@ const Upload = ({ contract, account, provider }) => {
           className="p-5"
           onChange={retrieveFile}
         />
-        {/* <span className="pb-4">Image: {fileName}</span> */}
+        <input
+          type="text"
+          placeholder="File Name"
+          value={fileName}
+          onChange={(e) => setFileName(e.target.value)}
+          className="p-5"
+        />
+        <textarea
+          placeholder="File Description"
+          value={fileDescription}
+          onChange={(e) => setFileDescription(e.target.value)}
+          className="p-5"
+        />
         <button
           variant="secondary"
           type="submit"
@@ -92,6 +89,7 @@ const Upload = ({ contract, account, provider }) => {
     </div>
   );
 };
+
 export default Upload;
 
 // import { useState } from "react";
