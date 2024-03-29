@@ -22,7 +22,7 @@ contract Upload {
       value[_user].push(url);
   }
   function allow(address user) external {//def
-      ownership[msg.sender][user]=true; 
+    //   ownership[msg.sender][user]=true; 
       if(previousData[msg.sender][user]){
          for(uint i=0;i<accessList[msg.sender].length;i++){
              if(accessList[msg.sender][i].user==user){

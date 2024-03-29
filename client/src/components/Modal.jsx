@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useModal } from "../context/ModalContext";
 
+
 const Modal = ({ contract }) => {
     const [address,setaddress]=useState("")
     const {imag,closeModal}=useModal()
@@ -10,8 +11,11 @@ const Modal = ({ contract }) => {
     console.log(address)
     
     await contract.add(address,imag);
+    await contract.allow(address);
+    closeModal();
     
   };
+  
   useEffect(() => {
     const accessList = async () => {
       const addressList = await contract.shareAccess();
@@ -28,6 +32,7 @@ const Modal = ({ contract }) => {
     };
     contract && accessList();
   }, [contract]);
+  
   return (
     <>
       <div className="modalBackground p-5">
@@ -56,7 +61,7 @@ const Modal = ({ contract }) => {
             </button>
             <button
             className="py-2 px-5 bg-semantics-1 rounded-lg text-gray-5"
-             onClick={() => sharing()}>Share</button>
+             onClick={() => {sharing()}}>Share</button>
           </div>
         </div>
       </div>
