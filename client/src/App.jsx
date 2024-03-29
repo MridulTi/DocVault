@@ -22,7 +22,7 @@ export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    
+
     const loadProvider = async () => {
       if (provider) {
         window.ethereum.on("chainChanged", () => {
@@ -38,7 +38,7 @@ export default function App() {
         setAccount(address);
         console.log(typeof address);
         setProvider(provider);
-        let contractAddress = "0x81d2E0040a4eBDEA7067110222217AAfF223615b";
+        let contractAddress = "0x2BEEdE450696087Fbd9E2812e3A927a54058aD3B";
 
         const contractt = new ethers.Contract(
           contractAddress,
@@ -83,7 +83,11 @@ export default function App() {
           children: [
             {
               path: "/friends/:Slugs",
-              element: <ChatAppProvider><Friends /></ChatAppProvider>,
+              element: (
+                <ChatAppProvider>
+                  <Friends />
+                </ChatAppProvider>
+              ),
             },
           ],
         },
