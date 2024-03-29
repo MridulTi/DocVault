@@ -44,7 +44,7 @@ export function ChatCard(props) {
   )
 }
 export function UserCard({el,addFriends}){
-  console.log()
+  console.log(el)
   return(
     <div>
       <Avatar className="w-8">
@@ -52,7 +52,7 @@ export function UserCard({el,addFriends}){
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       <p>{el.name}</p>
-      <p>{el.accountaddress.slice(0,25)}</p>
+      <p>{el.accountaddress}</p>
       <button
         onClick={()=>addFriends({name:el.name,accountaddress:el.accountaddress})}
       >Add Friends</button>

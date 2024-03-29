@@ -37,9 +37,8 @@ export default function App() {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
-        console.log(typeof address);
         setProvider(provider);
-        let contractAddress = "0x81d2E0040a4eBDEA7067110222217AAfF223615b";
+        let contractAddress = "0xaceD46eabc15f87bbB818d9160Be0E889f9f3Ff1";
 
         const contractt = new ethers.Contract(
           contractAddress,
@@ -84,7 +83,7 @@ export default function App() {
           children: [
             {
               path:"/friends",
-              element:<ChatAppProvider><Friends addresss={account}/></ChatAppProvider>
+              element:<ChatAppProvider><Friends address={account}/></ChatAppProvider>
             },
             {
               path:"/friends/allusers",
@@ -92,7 +91,7 @@ export default function App() {
             },
             {
               path: "/friends/:Slugs",
-              element: <ChatAppProvider><Friends addres={account}/></ChatAppProvider>,
+              element: <ChatAppProvider><Friends address={account}/></ChatAppProvider>,
             },
           ],
         },

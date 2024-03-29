@@ -17,7 +17,9 @@ function AllUsers() {
             <h1 className='font-bold text-2xl py-12 px-24 tracking-wider'>Find Your Friends</h1>
             <div className='grid grid-cols-3'>
                 {UserList.map((el,i)=>{
+                  return(
                     <UserCard el={el} addFriends={addFriends}/>
+                  )
                 })}
             </div>
         </div>

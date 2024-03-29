@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import ChatAppContract from "../../artifacts/ChatApp.json"
-
 import { ChatAppAddress } from '../../assets/constant'
+
 export const CheckIfWalletConneted = async () => {
   try{
     if(!window.ethereum)return console.log("Install Metamask");
@@ -31,19 +31,18 @@ export const connectWallet=async()=>{
   }
 }
 const fetchContract=(signerorProvider)=>new ethers.Contract(
-  ChatAppContract.abi,ChatAppAddress,signerorProvider
+  ChatAppAddress,ChatAppContract.abi,signerorProvider
 );
 export const connectingwithContract=async()=>{
   try{
-    const web3modal=new Web3Modal();
-    const connection=await web3modal.connect();
-    const Cprovider=new ethers.providers.Web3Provider(connection); 
+    const Cprovider=new ethers.providers.Web3Provider(window.ethereum); 
+    await Cprovider.send("eth_requestAccounts", []);
     const signer=Cprovider.getSigner();
     const C_contract=fetchContract(signer)
 
     return C_contract;
 
   }catch(error){
-    console.log(error);
+    console.log("Not Connecting with Contract");
   }
 }
