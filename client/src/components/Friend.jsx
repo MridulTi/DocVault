@@ -21,11 +21,11 @@ const Friend=()=>{
     return (
         <div className="">
             <div className="">
-                <div className="">
+                <div className="grid grid-flow-row gap-4 w-24 p-6">
                     {/* {console.log(FriendLists)} */}
                     {FriendLists.map((el)=>{
                         return(
-                            <ChatCard el={el} readMessage={readMessage} FriendMsg={FriendMsg} account={account} userName={UserName} currentUserName={currentUserName} currentUserAddress={currentUserAddress}/>
+                            <ChatCard name={el.name} pubkey={el.pubkey} readMessage={readMessage} FriendMsg={FriendMsg} account={account} userName={UserName} currentUserName={currentUserName} currentUserAddress={currentUserAddress}/>
 
                         )
                     })}

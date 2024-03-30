@@ -66,7 +66,7 @@ export const ChatAppProvider=({children})=>{
             // setLoading(true)
             await getCreatedUser.wait();
             // setLoading(false)
-            window.location.reload()
+            window.location.reload("/")
         } catch (error) {
             console.log("Error while creating your accound please reload your browser");
             
@@ -83,7 +83,7 @@ export const ChatAppProvider=({children})=>{
             console.log("hi")
             // getMyFriend()
             // setLoading(false)
-            window.location.reload()
+            window.location.reload("/")
 
         } catch (error) {
             setError("Something went wrong while adding friends , try again")

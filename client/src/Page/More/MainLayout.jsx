@@ -82,17 +82,7 @@ const MainLayout = ({contract,account,provider, setModalOpen }) => {
 
         </HoverCardContent>
       </HoverCard>
-      {Active&& (
-        <div className=" pt-16 bg-base-primary absolute z-10 right-0 top-0 w-64 h-[100vh] flex flex-col gap-4">
-          {AccCard.map((data) => {
-            return (
-              <ChatCard
-                {...data}
-              />
-            )
-          })}
-        </div>
-      )}
+      
       {modalOpen&&<div className="absolute top-0">
               <div className="w-screen h-screen grid place-items-center hello">
                 <div className=" p-5 rounded-2xl sm:max-w-[425px] bg-gray-5 text-gray-10">

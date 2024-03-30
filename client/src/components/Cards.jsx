@@ -30,16 +30,19 @@ export function DocsCard() {
     </div>
   )
 }
-export function ChatCard({el,readMessage,FriendMsg,account,userName,currentUserName,currentUserAddress}) {
-  // console.log(el)
+export function ChatCard({name,pubkey,readMessage,FriendMsg,account,userName,currentUserName,currentUserAddress}) {
   // const {user}=useAuth0();
   return (
-    <Link onClick={()=>{readMessage(account)}}><div className='hover:bg-gray-6 px-4 py-2 flex gap-4 place-items-center'>
+    <Link onClick={()=>{readMessage(account)}}><div className='hover:bg-gray-6 gap-1 p-6 bg-gray-7 rounded-2xl text-gray-5 flex place-items-center'>
       <Avatar className="w-12">
         <AvatarImage className="rounded-full" src='https://github.com/shadcn.png' />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <h1 className='tracking-widest w-2 text-gray-3 font-bold text-xl'>{el}</h1>
+      <div>
+      <h1 className='font-bold text-lg'>{name}</h1>
+      <h1 className='text-xs'>{pubkey}</h1>
+
+      </div>
 
     </div></Link>
   )

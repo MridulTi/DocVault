@@ -10,7 +10,7 @@ function ChatModal({funtionName, readMessage, FriendMsg, account ,userName,loadi
         <div>
             {console.log(FriendMsg)}
             {FriendMsg.map((el,i)=>(
-                <div>
+                <div className='bg-gray-7 p-12'>
                     {el.sender}
                 </div>
             ))}
