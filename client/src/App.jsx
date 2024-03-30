@@ -39,7 +39,7 @@ export default function App() {
         const address = await signer.getAddress();
         setAccount(address);
         setProvider(provider);
-        let contractAddress = "0xaceD46eabc15f87bbB818d9160Be0E889f9f3Ff1";
+        let contractAddress = "0x9Cc150Bc7b38D951E39f567FD28EFF47330ef0AB";
 
         const contractt = new ethers.Contract(
           contractAddress,

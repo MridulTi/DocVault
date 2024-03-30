@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { providers } from "ethers";
 import { useFile } from "../context/FileContext";
 const Upload = ({ contract, account, provider }) => {
-  const{changeFile,changeFileName}=useFile();
+  const{changeFile,changeFileName, file, fileName}=useFile();
   const [fileDescription, setFileDescription] = useState("");
 
   const handleSubmit = async (e) => {
@@ -16,7 +16,7 @@ const Upload = ({ contract, account, provider }) => {
         formData.append("file", file);
         formData.append("name", fileName); // Add file name to form data
         formData.append("description", fileDescription); // Add file description to form data
-
+            
         const resFile = await axios({
           method: "post",
           url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
@@ -46,9 +46,9 @@ const Upload = ({ contract, account, provider }) => {
     const reader = new window.FileReader();
     reader.readAsArrayBuffer(data);
     reader.onloadend = () => {
-      setFile(e.target.files[0]);
+      changeFile(e.target.files[0]);
     };
-    setFileName(e.target.files[0].name);
+    changeFileName(e.target.files[0].name);
     e.preventDefault();
   };
 
