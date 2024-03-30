@@ -5,6 +5,8 @@ import './index.css'
 import { Auth0Provider } from '@auth0/auth0-react';
 import { ModalProvider } from './context/ModalContext.jsx';
 import { FileProvider } from './context/FileContext.jsx';
+import { ShareProvider } from './context/ShareContext.jsx';
+import { ChatAppProvider } from './context/chatAppContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 <Auth0Provider
@@ -20,8 +22,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   >
     <ModalProvider>
     <FileProvider>
-
+    <ShareProvider>
+    <ChatAppProvider>
     <App />
+
+    </ChatAppProvider>
+    </ShareProvider>
     </FileProvider>
     </ModalProvider>
   </Auth0Provider>,

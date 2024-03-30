@@ -1,8 +1,10 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import { BookDashedIcon, PackageIcon } from 'lucide-react'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { useShare } from '../context/ShareContext'
+import { ChatAppContext } from '../context/chatAppContext'
 
 export function ConclusionCards(props) {
   return (
@@ -32,8 +34,17 @@ export function DocsCard() {
 }
 export function ChatCard({name,pubkey,readMessage,FriendMsg,account,userName,currentUserName,currentUserAddress}) {
   // const {user}=useAuth0();
+  const { openModall, modalOpen, setimag } = useShare();
+  const {changemypbk,curerntpbk}=useContext(ChatAppContext)
+  const handleShareButtonClick = () => {
+    openModall();
+  };
+  const handleChat=()=>{
+    let pub=pubkey
+    changemypbk(pub)
+  }
   return (
-    <Link onClick={()=>{readMessage(account)}}><div className='hover:bg-gray-6 gap-1 p-6 bg-gray-7 rounded-2xl text-gray-5 flex place-items-center'>
+    <a onClick={()=>{handleShareButtonClick();handleChat();}}><div className='hover:bg-gray-6 gap-1 p-6 bg-gray-7 rounded-2xl text-gray-5 flex place-items-center'>
       <Avatar className="w-12">
         <AvatarImage className="rounded-full" src='https://github.com/shadcn.png' />
         <AvatarFallback>CN</AvatarFallback>
@@ -44,7 +55,7 @@ export function ChatCard({name,pubkey,readMessage,FriendMsg,account,userName,cur
 
       </div>
 
-    </div></Link>
+    </div></a>
   )
 }
 export function UserCard({el,addFriends}){

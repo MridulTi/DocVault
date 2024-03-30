@@ -14,6 +14,9 @@ import { AccCard } from "../../lists/Data";
 import { ChatCard } from "../../components/Cards";
 import { useModal } from "../../context/ModalContext";
 import Modal from "../../components/Modal";
+import { useShare } from "../../context/ShareContext";
+import Share from "../../components/Share";
+import { useChatApp } from "../../context/chatAppContext";
 // import { Toast } from "../../components/ui/toast";
 // import Footer from "../../Components/Footer/Footer";
 // import Navbar from "../../Components/Navbar/Navbar";
@@ -21,6 +24,8 @@ import Modal from "../../components/Modal";
 const MainLayout = ({contract,account,provider, setModalOpen }) => {
   const { user } = useAuth0();
   const {modalOpen,closeModal}=useModal();
+  const {modalOpenn,closeModall}=useShare();
+  const {currentpbk}=useChatApp
   const location = useLocation();
   const [Active, setActive] = useState(false)
   const isButtonActive = (to) => {
@@ -91,6 +96,18 @@ const MainLayout = ({contract,account,provider, setModalOpen }) => {
                   </div>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
                     <Modal contract={contract}/>
+                  </div>
+                </div>
+              </div>
+            </div>}
+            {modalOpenn&&<div className="absolute top-0">
+              <div className="w-screen h-screen grid place-items-center hello">
+                <div className=" p-5 rounded-2xl sm:max-w-[425px] bg-gray-5 text-gray-10">
+                  <div>
+                    <div className="font-bold text-xl">Share</div>
+                  </div>
+                  <div className="grid w-full max-w-sm items-center gap-1.5">
+                    <Share contract={contract}/>
                   </div>
                 </div>
               </div>

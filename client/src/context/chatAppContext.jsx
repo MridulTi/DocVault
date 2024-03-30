@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect, useContext} from "react";
 
 import { CheckIfWalletConneted,connectWallet,connectingwithContract } from "../lib/utils/apiFeature";
 
@@ -14,6 +14,7 @@ export const ChatAppProvider=({children})=>{
     const [Loading, setLoading] = useState(false)
 
     // CHAT USER DATA
+    const [currentpbk, setcurrentpbk] = useState("")
     const [currentUserName, setcurrentUserName] = useState("")
     const [currentUserAddress, setcurrentUserAddress] = useState("")
     
@@ -116,6 +117,9 @@ export const ChatAppProvider=({children})=>{
         const Friends=await Contract.getMyFriendList();
         setFriendLists(Friends)
     }
+    const changemypbk=async(string)=>{
+        setcurrentpbk(string)
+    }
     return(
         <ChatAppContext.Provider value={{
             readMessage,
@@ -126,8 +130,20 @@ export const ChatAppProvider=({children})=>{
             getMyFriend,
             sendMessage,
             readUser,
-            account,UserName,FriendLists,FriendMsg,Loading,UserList,Error,currentUserAddress,currentUserName}}>
+            currentpbk,
+            changemypbk,
+            UserName,
+            FriendLists,
+            FriendMsg,
+            Loading,UserList,
+            account,
+            Error,
+            currentUserAddress,
+            currentUserName}}>
             {children}
         </ChatAppContext.Provider>
     )
 }
+export const useChatApp = () => {
+    return useContext(ChatAppContext);
+};

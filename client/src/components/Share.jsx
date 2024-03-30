@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useModal } from "../context/ModalContext";
+import { useShare } from "../context/ShareContext";
+import { ChatAppContext, useChatApp } from "../context/chatAppContext";
+import Display from "./Display";
 
 
 const Share = ({ contract}) => {
-    const [address,setaddress]=useState("")
-    const {imag,closeModal}=useModal()
+  const{currentpbk}=useChatApp();
+    // const [address,setaddress]=useState("")
+    const {imag,closeModall}=useShare()
+    // console.log("Share")
   const sharing = async () => {
     
     // const address = document.getElementsByClassName("address").value;
-    console.log(address)
+    // console.log(address)
     
-    await contract.add(address,imag);
-    await contract.allow(address);
+    await contract.add(currentpbk,imag);
+    await contract.allow(currentpbk);
     closeModal();
     
   };
@@ -37,7 +42,7 @@ const Share = ({ contract}) => {
     <>
       <div className="modalBackground p-5">
         <div className="modalContainer">
-          <div className="title font-semibold">Share with</div>
+          {/* <div className="title font-semibold">Share with</div>
           <div className="body">
             <input
               type="text"
@@ -49,10 +54,11 @@ const Share = ({ contract}) => {
             <select id="selectNumber">
               <option className="border">People With Access</option>
             </select>
-          </form>
+          </form> */}
+          <Display contract={contract} account={currentpbk}/>
           <div className="footer flex gap-4 pt-6">
             <button
-              onClick={closeModal}
+              onClick={closeModall}
               className="py-2 px-5 bg-semantics-2 rounded-lg text-gray-5"
               id="cancelBtn"
             >
