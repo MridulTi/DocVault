@@ -118,7 +118,7 @@ export const ChatAppProvider=({children})=>{
         setFriendLists(Friends)
     }
     const changemypbk=async(string)=>{
-        setcurrentpbk(string)
+         setcurrentpbk(string)
     }
     return(
         <ChatAppContext.Provider value={{

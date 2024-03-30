@@ -45,18 +45,26 @@ const Display = ({ contract, account, setModalOpen }) => {
         const images = str_array.map((item, i) => {
           return (
             <div className="rounded-xl w-72 aspect-square  grid overflow-hidden bg-gray-5 shadow-lg">
-              <img
+              <div className="border border-bottom-2 border-gray-10 object-center object-cover aspect-video items-center"
+                  style={{
+                    backgroundImage:`url(${item})`,
+                    backgroundSize:"contain"
+                  }}
+                  >
+
+                </div>
+              {/* <img
                 key={i}
-                className="border border-bottom-2 border-gray-10 object-center object-cover aspect-video items-center"
+                className=""
                 src={item}
                 alt={item}
-              />
+              /> */}
               <div className="text-gray-10 px-6 py-2 h-fit py-2">
                 <h1 className="font-bold text-lg">Photos</h1>
                 <p className="text-gray-1 font-light text-md">Description</p>
 
                 <div className="flex gap-2 place-items-center">
-                  <a href={item}>
+                  <a href={item} target="_blank">
                     <button className="px-4 py-1 bg-blues-3 text-gray-5 font-semibold">
                       Show More
                     </button>

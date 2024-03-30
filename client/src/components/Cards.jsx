@@ -22,7 +22,8 @@ export function ConclusionCards(props) {
 export function DocsCard() {
   return (
     <div class="max-w-sm rounded-lg bg-gray-5 text-gray-10 overflow-hidden shadow-lg">
-      <img class="w-full" src="vite.svg" className='w-24 items-center' alt="Sunset in the mountains" />
+      
+      <img class="w-full" src="vite.svg" className='w-24 h-12 items-center' alt="Sunset in the mountains" />
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
         <p class="text-gray-700 text-base">
@@ -42,6 +43,7 @@ export function ChatCard({name,pubkey,readMessage,FriendMsg,account,userName,cur
   const handleChat=()=>{
     let pub=pubkey
     changemypbk(pub)
+    console.log(curerntpbk);
   }
   return (
     <a onClick={()=>{handleShareButtonClick();handleChat();}}><div className='hover:bg-gray-6 gap-1 p-6 bg-gray-7 rounded-2xl text-gray-5 flex place-items-center'>
