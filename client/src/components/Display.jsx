@@ -4,8 +4,11 @@ import Modal from "./Modal";
 import { useModal } from "../context/ModalContext";
 import { ethers } from "ethers";
 import "./Upload.css";
+import { useFile } from "../context/FileContext";
 
 const Display = ({ contract, account, setModalOpen }) => {
+
+  const{fileName,file}=useFile();
   const handleConfirmation = () => {
     window.location.reload();
 
@@ -86,6 +89,7 @@ const Display = ({ contract, account, setModalOpen }) => {
       <div className="pb-4 w-[80vw]">
         <div className="flex gap-6  grid grid-cols-3">
           {data}
+          {file+" "+fileName}
           {console.log(modalOpen)}
         </div>
       </div>

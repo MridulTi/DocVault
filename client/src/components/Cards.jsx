@@ -47,14 +47,14 @@ export function ChatCard({el,readMessage,FriendMsg,account,userName,currentUserN
 export function UserCard({el,addFriends}){
   // console.log(el)
   return(
-    <div>
-      <Avatar className="w-8">
-        <AvatarImage className="rounded-full" src='https://github.com/shadcn.png' />
+    <div className='gap-1 p-6 bg-gray-7 rounded-2xl grid place-items-center'>
+      <Avatar className="">
+        <AvatarImage className="rounded-full w-16" src='https://github.com/shadcn.png' />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <p>{el.name}</p>
-      <p>{el.accountAddress}</p>
-      <button
+      <p className='font-bold text-lg'>{el.name}</p>
+      <p className='text-xs'>{el.accountAddress.slice(0,20)}</p>
+      <button className='bg-blues-3 px-4 py-2 font-semibold hover:bg-blues-2 rounded-full'
         onClick={()=>addFriends({name:el.name,accounAddress:el.accountAddress})}
       >Add Friends</button>
     </div>

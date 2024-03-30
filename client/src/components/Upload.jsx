@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import "./Upload.css";
 import { Button } from "./ui/button";
 import { providers } from "ethers";
-
+import { useFile } from "../context/FileContext";
 const Upload = ({ contract, account, provider }) => {
-  const [file, setFile] = useState(null);
-  const [fileName, setFileName] = useState("No image selected");
+  const{changeFile,changeFileName}=useFile();
   const [fileDescription, setFileDescription] = useState("");
 
   const handleSubmit = async (e) => {
@@ -32,8 +31,8 @@ const Upload = ({ contract, account, provider }) => {
 
         contract.add(account, ImgHash).then(() => {
           alert("Successfully Image Uploaded");
-          setFileName("No image selected");
-          setFile(null);
+          changeFileName("No image selected");
+          changeFile(null);
           setFileDescription(""); // Clear file description after upload
         });
       } catch (e) {
