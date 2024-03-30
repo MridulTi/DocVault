@@ -71,7 +71,11 @@ export function UserCard({el,addFriends}){
       <p className='font-bold text-lg'>{el.name}</p>
       <p className='text-xs'>{el.accountAddress.slice(0,20)}</p>
       <button className='bg-blues-3 px-4 py-2 font-semibold hover:bg-blues-2 rounded-full'
-        onClick={()=>addFriends({name:el.name,accounAddress:el.accountAddress})}
+        onClick={()=>{
+          addFriends({name:el.name,accounAddress:el.accountAddress});
+          // window.location.reload("/friends")
+
+        }}
       >Add Friends</button>
     </div>
   )

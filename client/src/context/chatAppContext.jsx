@@ -84,7 +84,7 @@ export const ChatAppProvider=({children})=>{
             console.log("hi")
             // getMyFriend()
             // setLoading(false)
-            window.location.reload("/")
+            // window.location.reload("/friends")
 
         } catch (error) {
             setError("Something went wrong while adding friends , try again")
